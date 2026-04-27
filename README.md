@@ -9,9 +9,9 @@ This repo is not tied to one product vertical. It packages a reusable architectu
 - safer tool use through explicit state and permissions
 - a clean split between dialogue quality and evidence tracking
 
-# Demonstration Video
+# Reference implementation
 
-
+The pattern in this playbook was extracted from a working real-time emergency dispatch prototype: [Reaper2403/emergency-dispatcher](https://github.com/Reaper2403/emergency-dispatcher). The video below shows that system; the playbook generalizes the architecture so you can apply it outside dispatch.
 
 https://github.com/user-attachments/assets/5ace6e6d-dfbb-4b50-bc61-1c02bed55953
 
