@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LLM Prompt Packet",
+  "type": "object",
+  "required": [
+    "version",
+    "known",
+    "missing_fields",
+    "next_question_field",
+    "next_question_goal",
+    "question_style",
+    "blocked_actions"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "known": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "missing_fields": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "next_question_field": {
+      "type": ["string", "null"]
+    },
+    "next_question_goal": {
+      "type": ["string", "null"]
+    },
+    "question_style": {
+      "type": "string",
+      "enum": ["yes_no", "short_open", "confirm_candidate", "none"]
+    },
+    "location_search_allowed": {
+      "type": "boolean"
+    },
+    "candidate_needs_confirmation": {
+      "type": "boolean"
+    },
+    "location_followup_prompt": {
+      "type": ["string", "null"]
+    },
+    "must_say_next": {
+      "type": ["string", "null"]
+    },
+    "blocked_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

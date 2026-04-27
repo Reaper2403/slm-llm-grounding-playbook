@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tool Result Envelope",
+  "type": "object",
+  "required": ["tool", "status", "payload"],
+  "properties": {
+    "tool": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ok", "candidate_only", "blocked", "error"]
+    },
+    "payload": {
+      "type": "object"
+    },
+    "reason": {
+      "type": ["string", "null"]
+    },
+    "requires_confirmation": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}

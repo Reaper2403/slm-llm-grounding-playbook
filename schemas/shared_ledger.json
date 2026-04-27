@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shared Ledger",
+  "type": "object",
+  "required": ["version", "hard_facts", "soft_state", "priority", "tool_gate", "provenance"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "hard_facts": {
+      "type": "object",
+      "required": [
+        "primary_entity",
+        "entity_kind",
+        "issue_cues",
+        "count_confirmed",
+        "binary_states",
+        "notes"
+      ],
+      "properties": {
+        "primary_entity": { "type": ["string", "null"] },
+        "entity_kind": {
+          "type": "string",
+          "enum": ["exact", "road_or_junction", "place_name", "sub_location_only", "vague", "none"]
+        },
+        "issue_cues": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "count_confirmed": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "string", "enum": ["unknown"] }
+          ]
+        },
+        "binary_states": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["yes", "no", "unknown"]
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "soft_state": {
+      "type": "object",
+      "required": ["best_guess", "notes"],
+      "properties": {
+        "best_guess": { "type": ["string", "null"] },
+        "notes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "priority": {
+      "type": "object",
+      "required": ["missing_fields", "next_question_field", "next_question_goal", "question_style"],
+      "properties": {
+        "missing_fields": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "next_question_field": { "type": ["string", "null"] },
+        "next_question_goal": { "type": ["string", "null"] },
+        "question_style": {
+          "type": "string",
+          "enum": ["yes_no", "short_open", "confirm_candidate", "none"]
+        },
+        "must_say_next": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "tool_gate": {
+      "type": "object",
+      "required": ["search_allowed", "candidate_only", "confirmed"],
+      "properties": {
+        "search_allowed": { "type": "boolean" },
+        "candidate_only": { "type": "boolean" },
+        "confirmed": { "type": "boolean" },
+        "candidate_text": { "type": ["string", "null"] },
+        "needs_confirmation": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["last_slm_turn_index", "last_slm_run_at", "slm_job_state"],
+      "properties": {
+        "last_slm_turn_index": { "type": "integer", "minimum": 0 },
+        "last_slm_run_at": { "type": ["string", "null"] },
+        "slm_job_state": {
+          "type": "string",
+          "enum": ["idle", "queued", "analyzing", "error"]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
