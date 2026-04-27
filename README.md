@@ -89,6 +89,26 @@ Good fits:
 
 ## Quick start
 
+Start from the tiny Python reference:
+
+```bash
+git clone https://github.com/Reaper2403/slm-llm-grounding-playbook.git
+cd slm-llm-grounding-playbook/starter_sdk/python
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+python3 - <<'PY'
+from slm_llm_grounding import empty_ledger, build_prompt_packet, should_schedule_slm
+
+ledger = empty_ledger()
+packet = build_prompt_packet(ledger)
+print(packet)
+print(should_schedule_slm(text="there is smoke in the kitchen", substantive_turns_since_last_run=0))
+PY
+```
+
+Then adapt it:
+
 1. Start with the schemas in [schemas](./schemas).
 2. Use the prompts in [prompts](./prompts) as a base.
 3. Adopt the scheduling rules in [orchestration/scheduler.md](./orchestration/scheduler.md).
