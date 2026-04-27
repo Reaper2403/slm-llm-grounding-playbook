@@ -9,6 +9,14 @@ This repo is not tied to one product vertical. It packages a reusable architectu
 - safer tool use through explicit state and permissions
 - a clean split between dialogue quality and evidence tracking
 
+# Demonstration Video
+
+
+
+https://github.com/user-attachments/assets/5ace6e6d-dfbb-4b50-bc61-1c02bed55953
+
+
+
 ## Core idea
 
 Use two lanes:
