@@ -38,6 +38,7 @@ This playbook keeps the LLM conversational while moving rigid state-tracking int
 ## What is in this repo
 
 - [PLAYBOOK.md](./PLAYBOOK.md): the end-to-end method
+- [FINE_TUNING.md](./FINE_TUNING.md): when to fine-tune, what to fine-tune, and how
 - [REFERENCE_ARCHITECTURE.md](./REFERENCE_ARCHITECTURE.md): system shape and data flow
 - [ANTI_PATTERNS.md](./ANTI_PATTERNS.md): what usually goes wrong
 - [schemas](./schemas): copyable JSON schemas
@@ -45,6 +46,7 @@ This playbook keeps the LLM conversational while moving rigid state-tracking int
 - [orchestration](./orchestration): trigger, merge, and scheduling rules
 - [examples](./examples): domain-specific adaptations
 - [evaluation](./evaluation): what to measure
+- [evaluation/training_strategy.md](./evaluation/training_strategy.md): rollout and dataset strategy
 - [starter_sdk/python](./starter_sdk/python): tiny reference implementation
 
 ## Recommended mental model
@@ -85,6 +87,17 @@ Good fits:
 4. Wire a shared ledger into your session state.
 5. Feed your LLM only the compact prompt packet, not the full transcript state blob.
 6. Gate tools off the ledger, not off raw LLM confidence.
+
+## Fine-tuning guidance
+
+This repo now includes a dedicated [fine-tuning guide](./FINE_TUNING.md).
+
+Short version:
+
+- fine-tune the **background SLM** first
+- keep its job narrow and evidence-only
+- use real transcript failures plus synthetic coverage
+- evaluate system outcomes, not just schema validity
 
 ## Design principles
 
